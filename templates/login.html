@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+
+<body class="body_login">
+    <div class="row container" id="container_login">
+        <a href="acesso.html"><i class="bi bi-arrow-left  btn_voltar mb-3"></i></a>
+        <h1 class="title_login mb-5">Por favor, insira <br> suas credenciais:</h1>
+        <div class="col-10 col-sm-10 col-lg-5 col-xl-5">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col col-sm col-lg col-xl">
+                        <!-- Adicione os IDs aos campos de entrada -->
+                        <label>Matricula</label>
+                        <input class="form-control" type="text" name="matricula" id="matricula">
+                        <label>Senha</label>
+                        <input class="form-control" type="password" name="senha" id="senha">
+                        <button class="btn btn-light mt-3 btn_login" onclick="fazerLogin()">Entrar</button>
+                    </div>
+                    <div class="row">
+                        <div class="col-8 col-sm-8 col-lg-6 col-xl-6">
+                            <a href="" class="link_login">Esqueci minha senha</a>
+                        </div>
+
+                        <a href='/registro_page' class="mt-3 link_register">Não fez acadastro ainda? cadastre-se!</a>
+                        <div class="form-check mt-3">
+                            <input class="form-check-input" type="checkbox" value="" id="input_checkbox">
+                            <label class="form-check-label" for="input_checkbox" id="label_checkbox">
+                                Aceito os termos de uso e concentimento de informações.
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-lg-6 col-xl-6" id="container_login_img">
+
+            </div>
+        </div>
+        <script>
+            function fazerLogin() {
+                var matricula = $("#matricula").val();
+                var senha = $("#senha").val();
+
+                // Enviar os dados para a rota de login
+                $.ajax({
+                    url: "/login", // Use o caminho relativo à sua aplicação
+                    method: "POST",
+                    data: {
+                        matricula: matricula,
+                        senha: senha
+                    },
+                    success: function (response) {
+                        console.log(response);
+                        // Redirecionar ou executar outras ações com base na resposta do servidor
+                    },
+                    error: function () {
+                        console.log("Erro ao fazer login");
+                    }
+                });
+            }
+        </script>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+            integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+            crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
